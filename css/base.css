@@ -1,6 +1,6 @@
 :root{--header:url('https://images2.imgbox.com/e5/fb/TTqPoDcu_o.png');--little-size:12px;--normal-size:14px;--medium-size:16px;--large-size:18px;--title-size:22px;--font:"Open Sans"}
 [data-color-scheme="dark"]{--header:url('https://images2.imgbox.com/89/30/IXFzrs0y_o.png')}
-a,a:link,a:visited,a:hover,a:active,a:focus{text-decoration:none!important;text-decoration-line:none!important;text-decoration-color:transparent!important}
+a,a:link,a:visited,a:hover,a:active,a:focus{white-space: break-spaces;text-decoration:none!important;text-decoration-line:none!important;text-decoration-color:transparent!important}
 *{box-sizing:border-box;scrollbar-color:var(--contrastLight);scrollbar-width:thin}
 body{font-family:var(--font);font-size:var(--normal-size);color:var(--textColor);margin:0 !important}
 #header{background-image:var(--header);background-position:center;background-repeat:no-repeat;background-size:auto;width:900px;height:330px;display:block}
