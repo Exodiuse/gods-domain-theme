@@ -1,1 +1,111 @@
-
+.gd-vf-title{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:18px;margin:0 0 12px}
+.gd-vf-title-line{height:1px;background:var(--gd-ornament)}
+.gd-vf-title h1{margin:0!important;padding:0!important;font-family:"Cormorant Garamond",Georgia,serif;font-size:28px!important;font-style:italic;font-weight:500!important;line-height:1;text-transform:uppercase;letter-spacing:1px;white-space:nowrap}
+.gd-vf-title h1 a{color:var(--gd-title)!important;font-weight:500!important}
+.gd-vf-meta{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:18px}
+.gd-vf-breadcrumb{min-width:0;font-size:9px;color:var(--gd-muted)}
+.gd-vf-breadcrumb a{color:var(--gd-muted)!important;font-weight:500}
+.gd-vf-breadcrumb a+a:before,.gd-vf-breadcrumb .nav:before{content:"›";margin:0 6px;color:var(--gd-ornament)}
+.gd-vf-header-actions{display:flex;align-items:center;gap:6px}
+.gd-vf-search{position:relative;z-index:5;display:grid!important;grid-template-columns:minmax(0,150px) 30px;gap:0!important;align-items:stretch;width:180px;height:30px;margin:0!important;padding:0!important}
+.gd-vf-search input[type="text"]{position:relative;z-index:6;display:block!important;width:100%!important;min-width:0!important;height:30px!important;margin:0!important;padding:5px 8px!important;border:1px solid var(--gd-border)!important;border-right:0!important;border-radius:0!important;background:var(--gd-surface)!important;color:var(--gd-text)!important;font-size:9px!important;cursor:text!important;pointer-events:auto!important;user-select:text!important;caret-color:var(--gd-text)!important}
+.gd-vf-search input[type="text"]:focus{outline:0!important;border-color:var(--accentClr)!important;border-right:0!important}
+.gd-vf-search button{position:relative;z-index:6;display:flex!important;align-items:center;justify-content:center;width:30px!important;min-width:30px!important;height:30px!important;margin:0!important;padding:0!important;border:1px solid var(--gd-border)!important;border-radius:0!important;background:var(--gd-soft)!important;color:var(--gd-title)!important;cursor:pointer!important;pointer-events:auto!important}
+.gd-vf-newtopic{display:inline-flex;align-items:center;justify-content:center;min-height:30px;padding:5px 10px!important;background:var(--accentClr)!important;color:#fffaf7!important;font-size:8px!important;font-weight:700!important;text-transform:uppercase;letter-spacing:.5px}
+.gd-vf-newtopic:before{margin-right:5px}
+.gd-vf-description{margin:0 0 22px;padding:17px 20px;background:var(--gd-surface);border:1px solid var(--gd-border);font-size:11px;line-height:1.72;text-align:justify}
+.gd-vf-description strong,.gd-vf-description b{color:var(--gd-title);text-transform:uppercase;letter-spacing:.35px}
+.gd-vf-subforums:empty{display:none}
+.gd-vf-subforums .links_bar{display:none!important}
+.gd-vf-actions-row{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:13px 0}
+.gd-vf-pagination{font-size:9px}
+.gd-vf-pagination .pagination{margin:0}
+.gd-vf-action-links{display:flex;align-items:center;justify-content:flex-end;gap:8px;font-size:8px}
+.gd-vf-action-links>a,.gd-vf-action-links>span>a,.gd-vf-sort>button{padding:4px 7px!important;border:1px solid var(--gd-border)!important;border-radius:0!important;background:var(--gd-soft)!important;color:var(--gd-muted)!important;font-size:8px!important;text-transform:uppercase;letter-spacing:.35px}
+.gd-vf-action-links i{margin-right:4px}
+.gd-vf-section-title{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:18px;margin:34px 0 16px;text-align:center}
+.gd-vf-section-title>span{height:1px;background:var(--gd-ornament)}
+.gd-vf-section-title h2{margin:0;color:var(--gd-title);font-family:"Cormorant Garamond",Georgia,serif;font-size:22px;font-style:italic;font-weight:500;text-transform:uppercase;letter-spacing:1px}
+.gd-vf-section-title small{display:block;margin-top:4px;color:var(--gd-muted);font-family:"Cormorant Garamond",Georgia,serif;font-size:10px;font-style:italic;font-weight:400;letter-spacing:.3px}
+.gd-topic-group{margin:0 0 18px}
+.gd-topic-group-heading{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:12px;margin:0 0 8px}
+.gd-topic-group-heading>span{height:1px;background:var(--gd-line)}
+.gd-topic-group-heading h3{margin:0!important;padding:0!important;color:var(--gd-muted)!important;font-size:7px!important;font-weight:700!important;text-transform:uppercase;letter-spacing:1.5px;white-space:nowrap}
+.gd-topic-list{display:flex;flex-direction:column;gap:7px}
+.gd-topic-row{position:relative;display:grid;grid-template-columns:34px minmax(0,1fr) 108px 190px;align-items:stretch;min-height:76px;background:var(--gd-surface);border:1px solid var(--gd-border)}
+.gd-topic-status{display:flex;align-items:center;justify-content:center;padding:9px 0}
+.gd-topic-status img{width:24px!important;height:24px!important;object-fit:contain}
+.gd-topic-main{min-width:0;padding:10px 12px 9px 4px}
+.gd-topic-title-line{display:flex;align-items:baseline;gap:5px;min-width:0;flex-wrap:wrap}
+.gd-topic-system-icons{display:inline-flex;align-items:center;gap:3px}
+.gd-topic-system-icons img{max-height:12px;width:auto}
+.gd-topic-type{display:inline-block;color:#fffaf7;background:var(--gd-nav);padding:2px 5px;font-size:7px;font-weight:700;text-transform:uppercase;letter-spacing:.4px}
+.gd-topic-type:empty{display:none}
+.gd-topic-title{min-width:0;margin:0!important;padding:0!important;font-family:"Cormorant Garamond",Georgia,serif;font-size:17px!important;font-style:italic;font-weight:500!important;line-height:1.15}
+.gd-topic-title .topictitle{display:block;max-width:100%;overflow:hidden;color:var(--gd-title)!important;font:inherit!important;font-weight:500!important;text-overflow:ellipsis;white-space:nowrap}
+.gd-topic-title .topictitle:hover{color:var(--accentClr)!important}
+.gd-topic-description{margin-top:4px;color:var(--gd-text)}
+.gd-topic-author{margin-top:4px;color:var(--gd-muted)}
+.gd-topic-author a{color:var(--gd-link)!important}
+.gd-topic-pages{margin-top:2px;font-size:7px;color:var(--gd-muted)}
+.gd-topic-stats{display:grid;grid-template-columns:1fr 1fr;align-items:center;border-left:1px solid var(--gd-line);border-right:1px solid var(--gd-line);text-align:center}
+.gd-topic-stats>div{padding:6px 3px}
+.gd-topic-stats>div+div{border-left:1px solid var(--gd-line)}
+.gd-topic-stats strong{display:block;color:var(--gd-title);font-family:"Cormorant Garamond",Georgia,serif;font-size:16px;font-weight:500;line-height:1}
+.gd-topic-stats span{display:block;margin-top:3px;color:var(--gd-muted);font-size:6px;text-transform:uppercase;letter-spacing:.45px}
+.gd-topic-last{display:flex;align-items:center;gap:8px;min-width:0;padding:9px 10px}
+.gd-topic-last-avatar{flex:0 0 38px;width:38px;height:38px}
+.gd-topic-last-avatar img{display:block;width:38px!important;height:38px!important;object-fit:cover;border:2px solid var(--gd-border);border-radius:50%}
+.gd-topic-last-info{min-width:0;color:var(--gd-muted);font-size:8px}
+.gd-topic-last-info a{color:var(--gd-link)!important}
+.gd-topic-last-info time{display:block;margin-top:3px;font-family:"Cormorant Garamond",Georgia,serif;font-size:10px;font-style:italic}
+.gd-topic-select{position:absolute;top:4px;right:4px}
+.gd-topic-inline-heading{padding:5px 8px;background:var(--gd-soft);color:var(--gd-muted);font-size:7px;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+.gd-no-topics{padding:20px;border:1px solid var(--gd-border);background:var(--gd-surface);color:var(--gd-muted);font-family:"Cormorant Garamond",Georgia,serif;font-size:16px;font-style:italic;text-align:center}
+.gd-topic-spacer{height:8px}
+.gd-topic-group-announcement .gd-topic-row{background:linear-gradient(90deg,var(--gd-soft) 0,var(--gd-surface) 34%)}
+.gd-vf-sort{position:relative}
+.gd-vf-sort>button{cursor:pointer}
+.gd-vf-sort-form{position:absolute!important;z-index:20;top:calc(100% + 5px)!important;right:0!important;display:none;width:220px!important;margin:0!important;padding:12px!important;border:1px solid var(--gd-border)!important;border-radius:0!important;background:var(--gd-surface)!important;box-shadow:none!important}
+.gd-vf-sort>button.expanded~.gd-vf-sort-form{display:block}
+.gd-vf-sort-title{margin-bottom:8px;color:var(--gd-title);font-family:"Cormorant Garamond",Georgia,serif;font-size:15px;font-style:italic}
+.gd-vf-sort-form select{width:100%;border-radius:0!important;font-size:9px!important}
+.gd-vf-sort-order{display:flex;gap:10px;margin:10px 0;font-size:8px}
+.gd-vf-sort-form input[type="submit"]{width:100%;padding:6px!important;border-radius:0!important;background:var(--gd-nav)!important;color:#fffaf7!important;font-size:8px!important;text-transform:uppercase}
+.gd-vf-lower-tools{display:flex;align-items:center;justify-content:space-between;gap:20px;margin:20px 0 14px;padding-top:12px;border-top:1px solid var(--gd-line)}
+.gd-vf-jumpbox{display:flex;align-items:center;gap:6px;font-size:8px}
+.gd-vf-jumpbox select{max-width:220px;padding:5px 7px!important;border-radius:0!important;font-size:8px!important}
+.gd-vf-jumpbox input[type="submit"]{padding:5px 8px!important;border-radius:0!important;background:var(--gd-nav)!important;color:#fffaf7!important;font-size:8px!important}
+.gd-vf-online{color:var(--gd-muted);font-size:8px;text-align:right}
+.gd-vf-info-panels{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0}
+.gd-vf-info-panels section{padding:10px 12px}
+.gd-vf-info-panels h3{font-size:8px!important;text-transform:uppercase;letter-spacing:.6px}
+.gd-vf-info-panels h3 i{margin-right:5px}
+.gd-vf-info-panels p{margin:0;color:var(--gd-muted);font-size:8px;line-height:1.5}
+.gd-vf-legend{display:flex;flex-wrap:wrap;justify-content:center;gap:5px 10px;margin:16px 0 0;padding:10px 0;border-top:1px solid var(--gd-line);list-style:none}
+.gd-vf-legend li{display:flex;align-items:center;gap:4px;color:var(--gd-muted);font-size:7px}
+.gd-vf-legend img{width:16px!important;height:16px!important;object-fit:contain}
+.gd-vf-subforums:not(:has(.gd-forum)){display:none}
+.gd-vf-subforums .gd-category{margin:0!important}
+.gd-vf-subforums .gd-category-header{display:none!important}
+.gd-vf-subforums .gd-category:first-of-type .gd-forums{display:block!important;grid-template-columns:none!important;grid-template-rows:none!important;gap:0!important}
+.gd-vf-subforums .gd-forum,.gd-vf-subforums .gd-category:first-of-type .gd-forum{display:flex!important;flex-direction:column!important;width:100%!important;min-height:0!important;margin:0 0 8px!important;grid-column:auto!important;grid-row:auto!important}
+.gd-vf-subforums .gd-forum-body,.gd-vf-subforums .gd-category:first-of-type .gd-forum:first-child .gd-forum-body,.gd-vf-subforums .gd-category:first-of-type .gd-forum:not(:first-child) .gd-forum-body{position:relative!important;display:grid!important;grid-template-columns:minmax(0,1fr) 165px!important;align-items:stretch!important;width:100%!important;min-height:82px!important;height:auto!important;padding:0!important;text-align:left!important}
+.gd-vf-subforums .gd-forum-info,.gd-vf-subforums .gd-category:first-of-type .gd-forum:first-child .gd-forum-info{width:auto!important;min-width:0!important;padding:12px 48px 10px 14px!important}
+.gd-vf-subforums .gd-forum-title,.gd-vf-subforums .gd-category:first-of-type .gd-forum:first-child .gd-forum-title{margin:0 0 5px!important;font-size:18px!important;text-align:left!important}
+.gd-vf-subforums .gd-forum-desc,.gd-vf-subforums .gd-category:first-of-type .gd-forum:first-child .gd-forum-desc{max-width:none!important;margin:0!important;font-size:10px!important;line-height:1.58!important;text-align:justify!important}
+.gd-vf-subforums .gd-forum-status,.gd-vf-subforums .gd-category:first-of-type .gd-forum:first-child .gd-forum-status,.gd-vf-subforums .gd-category:first-of-type .gd-forum:not(:first-child) .gd-forum-status{position:absolute!important;top:12px!important;right:178px!important;width:28px!important;height:28px!important;margin:0!important;transform:none!important}
+.gd-vf-subforums .gd-forum-last,.gd-vf-subforums .gd-category:first-of-type .gd-forum:first-child .gd-forum-last{grid-column:2!important;grid-row:1!important;align-self:stretch!important;width:auto!important;height:100%!important;margin:0!important;padding:10px 12px!important;border-left:1px solid var(--gd-line)!important;border-top:0!important;text-align:left!important}
+.gd-vf-subforums .gd-forum-footer{padding:4px 8px!important}
+.gd-vf-subforums .gd-subforums{margin-top:7px!important}
+.gd-vf-subforums + .gd-vf-actions-row{margin-top:8px!important}
+.gd-vf-section-title{margin-top:24px!important}
+.gd-vf-info-panels section{background:var(--gd-soft)!important;border:1px solid var(--gd-border)!important}
+.gd-vf-info-panels h3{margin:0 0 7px!important;padding:0 0 6px!important;background:transparent!important;border:0!important;border-bottom:1px solid var(--gd-line)!important;color:var(--gd-title)!important;box-shadow:none!important}
+.gd-vf-info-panels h3:before,.gd-vf-info-panels h3:after{content:none!important;display:none!important}
+.gd-topic-description{font-size:9.5px!important;line-height:1.5!important;text-align:justify!important}
+.gd-topic-author{font-size:8px!important}
+.gd-topic-last-info{line-height:1.45!important}
+.gd-vf-subforums{width:100%!important;margin:0 0 24px!important}
+.gd-vf-subforums .gd-category{width:100%!important}
+.gd-vf-subforums .gd-category:first-of-type .gd-forums{width:100%!important}
