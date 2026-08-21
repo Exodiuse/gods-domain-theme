@@ -35,7 +35,7 @@
 .gd-last-avatar img{width:42px;height:42px;object-fit:cover;border:2px solid var(--gd-border);border-radius:50%}
 .gd-last-content{min-width:0;font-size:8px;color:var(--gd-muted)}
 .gd-last-label{color:#b08479;font-weight:600;text-transform:uppercase}
-.gd-last-topic{display:block;overflow:hidden;color:#936a61 !important;font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:500;text-overflow:ellipsis;white-space:nowrap}
+.gd-last-topic{overflow:hidden;color:#936a61 !important;font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:500;text-overflow:ellipsis;white-space:nowrap}
 .gd-last-meta{margin-top:2px}
 .gd-forum-footer{border:0 !important;color:#a0918c}
 .gd-qeel{color:#695d59}
