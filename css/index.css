@@ -128,8 +128,8 @@
 .gd-category:first-of-type .gd-forum:not(:first-child) .gd-forum-body{grid-template-columns:minmax(0,1fr) 160px!important;height:100%;padding:0!important}
 .gd-category:first-of-type .gd-forum:not(:first-child) .gd-forum-status{right:175px}
 .gd-last-label{display:none!important}
-.gd-forum-desc{font-size:11px!important;line-height:1.62!important;text-align:justify!important;hyphens:auto}
-.gd-category:first-of-type .gd-forum:first-child .gd-forum-desc{font-size:11px!important;line-height:1.62!important;text-align:justify!important}
+.gd-forum-desc{font-size:12px!important;line-height:1.62!important;text-align:justify!important;hyphens:auto}
+.gd-category:first-of-type .gd-forum:first-child .gd-forum-desc{font-size:12px!important;line-height:1.62!important;text-align:justify!important}
 .gd-forum-last{padding-top:9px!important;padding-bottom:9px!important}
 .gd-last-content{line-height:1.45!important;background:var(--gd-last-content-bg);display: block;text-align: center;padding: 3px;border-radius: 3px;}
 .gd-qeel{margin:38px 0 22px!important}
