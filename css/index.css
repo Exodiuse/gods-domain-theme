@@ -29,7 +29,7 @@
 .gd-subforums:empty{display:none}
 .gd-subforums a{display:inline-block;margin:2px 4px 2px 0;padding:3px 7px;background:var(--gd-nav);color:#fffaf7 !important;font-size:8px;font-weight:600;text-transform:uppercase;letter-spacing:.4px}
 .gd-subforums a:hover{background:#bf8e83}
-.gd-forum-last{background:var(--gd-soft)}
+.gd-forum-last{background-color:var(--gd-soft);background-image:var(--bg-forum-last)}
 .gd-last-avatar{width:42px;height:42px}
 .gd-last-avatar:empty{display:none}
 .gd-last-avatar img{width:42px;height:42px;object-fit:cover;border:2px solid var(--gd-border);border-radius:50%}
