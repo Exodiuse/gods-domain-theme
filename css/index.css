@@ -131,7 +131,7 @@
 .gd-forum-desc{font-size:11px!important;line-height:1.62!important;text-align:justify!important;hyphens:auto}
 .gd-category:first-of-type .gd-forum:first-child .gd-forum-desc{font-size:11px!important;line-height:1.62!important;text-align:justify!important}
 .gd-forum-last{padding-top:9px!important;padding-bottom:9px!important}
-.gd-last-content{line-height:1.45!important}
+.gd-last-content{line-height:1.45!important;background:var(--gd-last-content-bg);display: block;text-align: center;padding: 3px;border-radius: 3px;}
 .gd-qeel{margin:38px 0 22px!important}
 .gd-qeel-header{margin-bottom:2px!important}
 .gd-qeel-subtitle{margin-bottom:12px!important}
