@@ -150,3 +150,121 @@
 .gd-category:nth-of-type(2) .gd-forum-last{padding:8px 10px!important}
 .gd-category:nth-of-type(2) .gd-forum-footer{padding:3px 8px!important}
 .gd-forum-title,.gd-forum-title>a{line-height:1.15!important}
+
+/* =========================================================
+   GOD'S DOMAIN — INDEX
+   ========================================================= */
+
+/* Scope accueil uniquement */
+.main_forum:has(.gd-pa){
+    background:transparent!important;
+    box-shadow:none!important;
+    border:0!important;
+    padding:0!important;
+}
+
+.main_forum:has(.gd-pa) #page-body{
+    background:transparent!important;
+}
+
+/* ---------- PA ---------- */
+.main_forum:has(.gd-pa) .gd-pa{
+    margin:0 0 34px!important;
+    background:var(--gd-surface)!important;
+    border:1px solid var(--gd-border)!important;
+    box-shadow:0 8px 24px rgba(91,61,50,.06);
+}
+
+/* ---------- CATÉGORIES ---------- */
+.main_forum:has(.gd-pa) .gd-category{
+    position:relative;
+    margin:34px 0!important;
+    padding:0 10px 10px!important;
+    background:var(--gd-surface)!important;
+    border:1px solid var(--gd-border)!important;
+    box-shadow:0 8px 24px rgba(91,61,50,.055);
+}
+
+/* Bandeau de catégorie */
+.main_forum:has(.gd-pa) .gd-category-header{
+    position:relative;
+    width:calc(100% + 20px)!important;
+    margin:0 -10px 10px!important;
+    padding:10px 14px!important;
+    box-sizing:border-box;
+    background:linear-gradient(90deg,var(--gd-nav),var(--gd-ornament),var(--gd-nav))!important;
+    border-bottom:1px solid var(--gd-border)!important;
+}
+
+.main_forum:has(.gd-pa) .gd-category-header h2{
+    color:#fffaf7!important;
+    text-shadow:0 1px 0 rgba(91,61,50,.08);
+}
+
+/* Les anciennes lignes autour du titre deviennent très discrètes dans le bandeau. */
+.main_forum:has(.gd-pa) .gd-category-line{
+    background:rgba(255,250,247,.58)!important;
+    opacity:.7;
+}
+
+/* Forums internes : on garde la composition actuelle mais on les lit comme sous-cartes. */
+.main_forum:has(.gd-pa) .gd-category .gd-forum{
+    background:var(--gd-surface)!important;
+    border-color:var(--gd-border)!important;
+    box-shadow:none!important;
+}
+
+/* ---------- QEEL : bloc autonome ---------- */
+.main_forum:has(.gd-pa) .gd-qeel{
+    margin:34px 0!important;
+    padding:0 10px 10px!important;
+    background:var(--gd-surface)!important;
+    border:1px solid var(--gd-border)!important;
+    box-shadow:0 8px 24px rgba(91,61,50,.055);
+}
+
+.main_forum:has(.gd-pa) .gd-qeel-header{
+    width:calc(100% + 20px)!important;
+    margin:0 -10px 6px!important;
+    padding:11px 14px 7px!important;
+    box-sizing:border-box;
+    background:var(--gd-surface)!important;
+    border-bottom:0!important;
+}
+
+.main_forum:has(.gd-pa) .gd-qeel-grid{
+    border:1px solid var(--gd-border)!important;
+}
+
+.main_forum:has(.gd-pa) .gd-qeel-recent{
+    border-left:1px solid var(--gd-border)!important;
+    border-right:1px solid var(--gd-border)!important;
+}
+
+/* ---------- FOOTER : dernier îlot ---------- */
+body:has(.gd-pa) #page-footer{
+    margin:34px 0 0!important;
+    padding:12px 16px!important;
+    box-sizing:border-box;
+    background:var(--gd-surface)!important;
+    border:1px solid var(--gd-border)!important;
+    color:var(--gd-muted)!important;
+    box-shadow:0 8px 24px rgba(91,61,50,.045);
+    text-align:center;
+}
+
+body:has(.gd-pa) #page-footer a{
+    color:var(--gd-muted)!important;
+}
+
+/* Les petits blocs techniques entre les grands îlots restent transparents. */
+.main_forum:has(.gd-pa) .topiclist.forums,
+.main_forum:has(.gd-pa) .block,
+.main_forum:has(.gd-pa) .forabg{
+    box-shadow:none;
+}
+
+/* Dark : les variables existantes pilotent les surfaces. */
+[data-color-scheme="dark"] .main_forum:has(.gd-pa){
+    background:transparent!important;
+}
