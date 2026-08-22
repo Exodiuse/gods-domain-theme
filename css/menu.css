@@ -1,0 +1,33 @@
+/* GOD'S DOMAIN — MENU PRINCIPAL V1 */
+.gd-navbar{display:none!important}
+.gd-utility-bar{position:relative;z-index:90;display:flex;align-items:center;justify-content:space-between;width:100%;min-height:48px;padding:0 14px;background:var(--gd-surface);border-bottom:1px solid var(--gd-border);box-sizing:border-box}
+.gd-utility-brand{display:flex;align-items:center;gap:9px;color:var(--gd-title)!important;font-family:"Cormorant Garamond",Georgia,serif;font-size:17px;font-style:italic;letter-spacing:.5px;text-transform:uppercase}
+.gd-utility-brand:before{content:"";width:8px;height:8px;border:1px solid var(--accentClr);border-radius:50%;background:var(--gd-soft)}
+.gd-utility-links{display:flex;align-items:center;justify-content:flex-end;gap:6px}
+.gd-utility-link{position:relative;display:flex!important;align-items:center;justify-content:center;width:34px;height:34px;padding:0!important;border:1px solid var(--gd-border);background:var(--gd-soft);color:var(--gd-title)!important;transition:.2s ease}
+.gd-utility-link:hover{background:var(--accentClr);border-color:var(--accentClr);color:#fff!important;transform:translateY(-1px)}
+.gd-utility-link i{font-size:14px;line-height:1}
+.gd-utility-link span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.gd-hero{position:relative!important}
+.gd-menu-trigger{position:absolute;z-index:95;top:18px;right:18px;display:flex;align-items:center;justify-content:center;width:42px;height:42px;padding:0;border:1px solid rgba(255,255,255,.75);border-radius:50%;background:rgba(255,250,247,.82);color:var(--gd-title);box-shadow:0 5px 18px rgba(92,61,45,.12);backdrop-filter:blur(7px);cursor:pointer}
+.gd-menu-trigger:hover{background:var(--accentClr);border-color:var(--accentClr);color:#fff}
+.gd-menu-trigger-lines,.gd-menu-trigger-lines:before,.gd-menu-trigger-lines:after{display:block;width:15px;height:1px;background:currentColor;content:"";transition:.25s ease}
+.gd-menu-trigger-lines{position:relative}.gd-menu-trigger-lines:before{position:absolute;top:-5px;left:0}.gd-menu-trigger-lines:after{position:absolute;top:5px;left:0}
+.gd-menu-trigger[aria-expanded="true"] .gd-menu-trigger-lines{background:transparent}
+.gd-menu-trigger[aria-expanded="true"] .gd-menu-trigger-lines:before{top:0;transform:rotate(45deg)}
+.gd-menu-trigger[aria-expanded="true"] .gd-menu-trigger-lines:after{top:0;transform:rotate(-45deg)}
+.gd-menu-backdrop{position:fixed;z-index:998;inset:0;background:rgba(70,45,38,.24);backdrop-filter:blur(2px);opacity:0;visibility:hidden;pointer-events:none;transition:.25s ease}
+.gd-menu-panel{position:fixed;z-index:999;top:0;right:0;width:min(390px,92vw);height:100vh;padding:28px 26px 24px;background:var(--gd-surface);border-left:1px solid var(--gd-border);box-shadow:-18px 0 45px rgba(80,52,44,.13);box-sizing:border-box;overflow:auto;transform:translateX(102%);visibility:hidden;transition:transform .32s ease,visibility .32s}
+body.gd-menu-open{overflow:hidden}body.gd-menu-open .gd-menu-backdrop{opacity:1;visibility:visible;pointer-events:auto}body.gd-menu-open .gd-menu-panel{transform:translateX(0);visibility:visible}
+.gd-menu-panel-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:28px}
+.gd-menu-kicker{display:block;margin-bottom:3px;color:var(--gd-muted);font-size:7px;text-transform:uppercase;letter-spacing:1.3px}
+.gd-menu-panel-title{margin:0;color:var(--gd-title);font-family:"Cormorant Garamond",Georgia,serif;font-size:29px;font-style:italic;font-weight:500;line-height:1}
+.gd-menu-close{display:flex;align-items:center;justify-content:center;width:30px;height:30px;padding:0;border:1px solid var(--gd-border);background:var(--gd-soft);color:var(--gd-title);cursor:pointer}
+.gd-menu-close:before{content:"×";font:300 20px/1 Arial,sans-serif}
+.gd-menu-list{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0;padding:0;list-style:none}
+.gd-menu-list li{min-width:0}
+.gd-menu-list a{position:relative;display:flex!important;align-items:center;min-height:52px;padding:9px 12px 9px 39px!important;border:1px solid var(--gd-border);background:var(--gd-soft);color:var(--gd-title)!important;font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.45px;box-sizing:border-box;transition:.2s ease}
+.gd-menu-list a:before{content:attr(data-gd-index);position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--accentClr);font-family:"Cormorant Garamond",Georgia,serif;font-size:13px;font-style:italic;font-weight:500}
+.gd-menu-list a:hover{background:var(--gd-surface);border-color:var(--accentClr);transform:translateY(-1px)}
+.gd-menu-panel-foot{margin-top:24px;padding-top:14px;border-top:1px solid var(--gd-line);color:var(--gd-muted);font-family:"Cormorant Garamond",Georgia,serif;font-size:13px;font-style:italic;text-align:center}
+@media(max-width:760px){.gd-utility-bar{min-height:44px;padding:0 9px}.gd-utility-brand{font-size:14px}.gd-utility-links{gap:4px}.gd-utility-link{width:30px;height:30px}.gd-menu-trigger{top:12px;right:12px;width:38px;height:38px}.gd-menu-panel{padding:22px 18px}.gd-menu-list{grid-template-columns:1fr}}
