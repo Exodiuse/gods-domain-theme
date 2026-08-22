@@ -101,7 +101,7 @@
 [data-color-scheme="dark"] .gd-pa-side,[data-color-scheme="dark"] .gd-qeel-recent{background:var(--gd-soft)!important}
 .gd-forum-title,.gd-forum-title>a,.gd-forum-title>a:link,.gd-forum-title>a:visited,.gd-forum-title>a:hover,.gd-forum-title>a:active{border:0!important;border-bottom:0!important;box-shadow:none!important;outline:0!important;text-decoration:none!important;text-decoration-line:none!important;background-image:none!important}
 .gd-forum-title>a::before,.gd-forum-title>a::after{content:none!important;display:none!important}
-.main_forum,.gd-pa,.gd-forum,.gd-qeel-grid{background:var(--gd-surface)!important}
+.gd-pa,.gd-forum,.gd-qeel-grid{background:var(--gd-surface)!important}
 .gd-pa,.gd-forum,.gd-qeel-grid,.gd-qeel-recent{border-color:var(--gd-border)!important}
 .gd-pa-side,.gd-qeel-recent{background:var(--gd-soft)!important}
 .gd-navbar,.introduction>.h3{background:var(--gd-nav)!important}
