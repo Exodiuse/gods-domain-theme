@@ -20,24 +20,43 @@ function labelOf(a){
     return a.getAttribute('href')||'Lien';
   }
 }
+function canonicalHref(a){
+  try{
+    var u=new URL(a.href,location.href);
+    u.hash='';
+    return u.origin+u.pathname+u.search;
+  }catch(e){
+    return a.getAttribute('href')||'';
+  }
+}
 
-/* On ne fabrique PAS la navigation :
-   on lit tous les <a> réellement produits par {GENERATED_NAV_BAR}. */
+/* Tous les liens Forumactif, mais sans doublon d'URL exacte.
+   Si deux entrées mènent strictement à la même URL, la première est conservée. */
 function collectForumactifLinks(nav){
   var result=[];
+  var seenHref={};
+
   Array.prototype.forEach.call(nav.querySelectorAll('a[href]'),function(a){
     var href=a.getAttribute('href')||'';
     if(!href || href==='#' || /^javascript:/i.test(href))return;
+
+    var key=canonicalHref(a);
+    if(seenHref[key])return;
+    seenHref[key]=true;
+
     result.push({
       source:a,
-      label:labelOf(a)
+      label:labelOf(a),
+      hrefKey:key
     });
   });
+
   return result;
 }
 
 function typeFor(label,href){
   var s=norm(label+' '+href);
+
   if(/deconnexion|logout/.test(s))return'logout';
   if(/connexion|login/.test(s))return'login';
   if(/enregistr|register|inscription/.test(s))return'register';
@@ -143,12 +162,12 @@ function init(){
       im.alt=isLogged && ud.username ? 'Avatar de '+ud.username : 'Avatar par défaut';
     }
   }else{
-    /* Secours uniquement si Forumactif ne fournit aucun avatar dans _userdata. */
     avatar.textContent='✦';
   }
 
   var userText=document.createElement('div');
   userText.className='gd-topnav-usertext';
+
   var name=isLogged && ud.username ? ud.username : 'Anonymous';
   userText.innerHTML='<strong></strong><small>'+(isLogged?'welcome back, wanderer':'welcome to the domain')+'</small>';
   userText.querySelector('strong').textContent=name;
@@ -163,7 +182,7 @@ function init(){
   brand.href='/';
   brand.innerHTML='<span class="gd-topnav-brand-main">God’s Domain</span><span class="gd-topnav-brand-sub">beyond the veil</span>';
 
-  /* ---------- TOUS LES LIENS FORUMACTIF ---------- */
+  /* ---------- NAVIGATION ---------- */
   var actions=document.createElement('nav');
   actions.className='gd-topnav-actions';
   actions.setAttribute('aria-label','Navigation principale');
@@ -172,15 +191,16 @@ function init(){
     var type=typeFor(item.label,item.source.href);
     var a=document.createElement('a');
 
-    /* Tous les attributs fonctionnels du lien original sont conservés :
-       href de déconnexion avec session, target, onclick, rel, data-*, etc. */
     copyAttributes(item.source,a);
 
     a.className='gd-topnav-action gd-nav-'+type;
-    a.title=item.label;
+    a.title=''; /* on utilise notre infobulle, pas le tooltip natif du navigateur */
     a.setAttribute('aria-label',item.label);
+    a.setAttribute('data-gd-tooltip',item.label);
+
     a.innerHTML='<i class="'+iconFor(type)+'" aria-hidden="true"></i><span class="gd-visually-hidden"></span>';
     a.querySelector('.gd-visually-hidden').textContent=item.label;
+
     actions.appendChild(a);
   });
 
@@ -189,14 +209,20 @@ function init(){
   top.appendChild(actions);
   document.body.insertBefore(top,document.body.firstChild);
 
-  /* ---------- VRAI BOUTON NOTIFICATIONS ---------- */
+  /* ---------- NOTIFICATIONS ---------- */
   function mountNotifications(){
     var notif=document.getElementById('notiffi_button');
     if(!notif || notif.parentNode===actions)return !!notif;
+
     notif.classList.add('gd-topnav-notifications');
+    notif.setAttribute('data-gd-tooltip','Notifications');
+    notif.setAttribute('aria-label','Notifications');
+    notif.removeAttribute('title');
+
     actions.appendChild(notif);
     return true;
   }
+
   if(!mountNotifications()){
     var attempts=0;
     var timer=setInterval(function(){
@@ -205,10 +231,13 @@ function init(){
     },250);
   }
 
-  /* Si un ancien JS menu est encore brièvement en cache, on enlève son bouton/popup. */
+  /* Nettoyage des anciens boutons/panneaux des versions précédentes. */
   document.querySelectorAll('.gd-menu-trigger,.gd-menu-popover').forEach(function(el){el.remove()});
 }
 
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
-else init();
+if(document.readyState==='loading'){
+  document.addEventListener('DOMContentLoaded',init);
+}else{
+  init();
+}
 })();
