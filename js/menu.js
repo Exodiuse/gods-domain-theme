@@ -114,6 +114,23 @@ function init(){
   /* place vraiment pleine largeur, tout en haut du body */
   document.body.insertBefore(top,document.body.firstChild);
 
+  /* Déplace le vrai bouton Notifications dans la topbar.
+     On déplace le nœud existant (pas une copie), donc ses événements Forumactif restent actifs. */
+  function mountNotifications(){
+    var notif=document.getElementById('notiffi_button');
+    if(!notif || notif.parentNode===actions)return !!notif;
+    notif.classList.add('gd-topnav-notifications');
+    actions.appendChild(notif);
+    return true;
+  }
+  if(!mountNotifications()){
+    var tries=0;
+    var notifTimer=setInterval(function(){
+      tries++;
+      if(mountNotifications() || tries>20)clearInterval(notifTimer);
+    },250);
+  }
+
   /* bouton rond dans le header */
   var trigger=document.createElement('button');
   trigger.type='button';
