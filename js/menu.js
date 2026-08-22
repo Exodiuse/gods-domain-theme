@@ -7,141 +7,189 @@ function norm(s){
 function labelOf(a){
   var txt=(a.textContent||'').replace(/\s+/g,' ').trim();
   if(txt)return txt;
-  if(a.getAttribute('title'))return a.getAttribute('title').trim();
-  if(a.getAttribute('aria-label'))return a.getAttribute('aria-label').trim();
+  var title=a.getAttribute('title');
+  if(title)return title.trim();
+  var aria=a.getAttribute('aria-label');
+  if(aria)return aria.trim();
   var img=a.querySelector('img[alt]');
   if(img && img.alt)return img.alt.trim();
-  try{return new URL(a.href,location.href).pathname}catch(e){return a.getAttribute('href')||'Lien'}
+  try{
+    var u=new URL(a.href,location.href);
+    return u.pathname+(u.search||'');
+  }catch(e){
+    return a.getAttribute('href')||'Lien';
+  }
 }
-function allNavLinks(nav){
-  var out=[],seen={};
+
+/* On ne fabrique PAS la navigation :
+   on lit tous les <a> réellement produits par {GENERATED_NAV_BAR}. */
+function collectForumactifLinks(nav){
+  var result=[];
   Array.prototype.forEach.call(nav.querySelectorAll('a[href]'),function(a){
     var href=a.getAttribute('href')||'';
     if(!href || href==='#' || /^javascript:/i.test(href))return;
-    var label=labelOf(a);
-    var key=href+'|'+label;
-    if(seen[key])return;
-    seen[key]=1;
-    out.push({node:a,href:a.href,label:label});
+    result.push({
+      source:a,
+      label:labelOf(a)
+    });
   });
-  return out;
+  return result;
 }
-function findLink(links,re){
-  return links.find(function(x){return re.test(norm(x.label+' '+x.href))});
+
+function typeFor(label,href){
+  var s=norm(label+' '+href);
+  if(/deconnexion|logout/.test(s))return'logout';
+  if(/connexion|login/.test(s))return'login';
+  if(/enregistr|register|inscription/.test(s))return'register';
+  if(/nouveaux messages prives|new private|new pm/.test(s))return'newpm';
+  if(/messages prives|messagerie|privmsg/.test(s))return'messages';
+  if(/editer mon profil|profil|profile/.test(s))return'profile';
+  if(/groupes|groups/.test(s))return'groups';
+  if(/membres|memberlist/.test(s))return'members';
+  if(/recherche avancee|advanced search/.test(s))return'advancedsearch';
+  if(/recherch|search/.test(s))return'search';
+  if(/publications|publish/.test(s))return'publications';
+  if(/faq/.test(s))return'faq';
+  if(/activites|activity/.test(s))return'activity';
+  if(/dernieres images|latest images/.test(s))return'latestimages';
+  if(/galerie|gallery/.test(s))return'gallery';
+  if(/calendrier|calendar/.test(s))return'calendar';
+  if(/portail|portal/.test(s))return'portal';
+  if(/accueil|index|\/forum/.test(s))return'home';
+  return'other';
 }
-function icon(name){
-  var map={
-    home:'ion-home',search:'ion-android-search',members:'ion-person-stalker',
-    profile:'ion-person',messages:'ion-email',login:'ion-log-in',logout:'ion-log-out'
+function iconFor(type){
+  var icons={
+    home:'ion-home',
+    portal:'ion-ios-world',
+    calendar:'ion-calendar',
+    gallery:'ion-images',
+    latestimages:'ion-images',
+    activity:'ion-ios-pulse-strong',
+    faq:'ion-help-circled',
+    publications:'ion-document-text',
+    search:'ion-android-search',
+    advancedsearch:'ion-ios-search-strong',
+    members:'ion-person-stalker',
+    groups:'ion-person-stalker',
+    profile:'ion-person',
+    messages:'ion-email',
+    newpm:'ion-email-unread',
+    register:'ion-person-add',
+    login:'ion-log-in',
+    logout:'ion-log-out',
+    other:'ion-android-more-horizontal'
   };
-  return map[name]||'ion-ios-circle-filled';
+  return icons[type]||icons.other;
 }
-function data(){
+function copyAttributes(from,to){
+  Array.prototype.forEach.call(from.attributes,function(attr){
+    if(attr.name==='class' || attr.name==='style')return;
+    to.setAttribute(attr.name,attr.value);
+  });
+}
+function userData(){
   return (typeof window._userdata==='object' && window._userdata) ? window._userdata : {};
 }
-function isLogged(ud){
+function logged(ud){
   return !!(ud && (ud.session_logged_in===1 || ud.session_logged_in==='1' || ud.session_logged_in===true));
 }
-function avatarMarkup(ud){
+function avatarHTML(ud){
   if(ud && ud.avatar)return ud.avatar;
   if(ud && ud.avatar_link)return '<img src="'+ud.avatar_link+'" alt="">';
   return '';
 }
-function safeColor(c){
-  return /^[0-9a-f]{3,8}$/i.test(c||'') ? '#'+c : '';
-}
 
 function init(){
   var nav=document.querySelector('.gd-navbar');
-  var header=document.querySelector('.gd-header');
-  if(!nav||!header||document.querySelector('.gd-topnav'))return;
+  if(!nav || document.querySelector('.gd-topnav'))return;
 
-  var links=allNavLinks(nav);
-  if(!links.length)return;
+  var items=collectForumactifLinks(nav);
+  if(!items.length)return;
 
-  var ud=data(),logged=isLogged(ud);
-  var login=findLink(links,/connexion|login/);
-  var logout=findLink(links,/deconnexion|logout/);
-  var register=findLink(links,/enregistr|register|inscription/);
-  var profile=findLink(links,/profil|profile/);
+  var ud=userData();
+  var isLogged=logged(ud);
 
-  /* ---------- TOPBAR ---------- */
+  var profileItem=items.find(function(x){
+    return typeFor(x.label,x.source.href)==='profile';
+  });
+  var loginItem=items.find(function(x){
+    return typeFor(x.label,x.source.href)==='login';
+  });
+
   var top=document.createElement('div');
   top.className='gd-topnav';
 
+  /* ---------- UTILISATEUR ---------- */
   var left=document.createElement('div');
   left.className='gd-topnav-left';
 
-  var userLink=document.createElement(logged && profile ? 'a' : (login ? 'a' : 'div'));
+  var userLink=document.createElement((isLogged && profileItem) || (!isLogged && loginItem) ? 'a' : 'div');
   userLink.className='gd-topnav-userlink';
-  if(userLink.tagName==='A')userLink.href=logged && profile ? profile.href : login.href;
+  if(userLink.tagName==='A'){
+    userLink.href=isLogged && profileItem ? profileItem.source.href : loginItem.source.href;
+  }
 
-  var av=document.createElement('div');
-  av.className='gd-topnav-avatar';
+  var avatar=document.createElement('div');
+  avatar.className='gd-topnav-avatar';
 
-  /* _userdata.avatar est le markup d'avatar Forumactif.
-     Chez un membre il s'agit de son avatar ; chez un invité on laisse
-     Forumactif fournir son avatar par défaut lorsqu'il est disponible. */
-  var markup=avatarMarkup(ud);
-  if(markup){
-    av.innerHTML=markup;
-    var img=av.querySelector('img');
-    if(img){img.removeAttribute('width');img.removeAttribute('height')}
+  var html=avatarHTML(ud);
+  if(html){
+    avatar.innerHTML=html;
+    var im=avatar.querySelector('img');
+    if(im){
+      im.removeAttribute('width');
+      im.removeAttribute('height');
+      im.alt=isLogged && ud.username ? 'Avatar de '+ud.username : 'Avatar par défaut';
+    }
   }else{
-    av.textContent='✦';
+    /* Secours uniquement si Forumactif ne fournit aucun avatar dans _userdata. */
+    avatar.textContent='✦';
   }
 
   var userText=document.createElement('div');
   userText.className='gd-topnav-usertext';
-  var username=logged && ud.username ? ud.username : 'Anonymous';
-  userText.innerHTML='<strong></strong><small>'+(logged?'welcome back, wanderer':'welcome to the domain')+'</small>';
-  userText.querySelector('strong').textContent=username;
+  var name=isLogged && ud.username ? ud.username : 'Anonymous';
+  userText.innerHTML='<strong></strong><small>'+(isLogged?'welcome back, wanderer':'welcome to the domain')+'</small>';
+  userText.querySelector('strong').textContent=name;
 
-  if(logged && ud.groupcolor){
-    var col=safeColor(ud.groupcolor);
-    if(col)userText.querySelector('strong').style.color=col;
-  }
+  userLink.appendChild(avatar);
+  userLink.appendChild(userText);
+  left.appendChild(userLink);
 
-  userLink.appendChild(av);userLink.appendChild(userText);left.appendChild(userLink);
-
+  /* ---------- BRAND ---------- */
   var brand=document.createElement('a');
-  brand.className='gd-topnav-brand';brand.href='/';
+  brand.className='gd-topnav-brand';
+  brand.href='/';
   brand.innerHTML='<span class="gd-topnav-brand-main">God’s Domain</span><span class="gd-topnav-brand-sub">beyond the veil</span>';
 
+  /* ---------- TOUS LES LIENS FORUMACTIF ---------- */
   var actions=document.createElement('nav');
-  actions.className='gd-topnav-actions';actions.setAttribute('aria-label','Accès rapides');
+  actions.className='gd-topnav-actions';
+  actions.setAttribute('aria-label','Navigation principale');
 
-  function quick(name,re,label){
-    var x=findLink(links,re);
-    if(!x)return;
-    var q=document.createElement('a');
-    q.className='gd-topnav-action';q.dataset.gdQuick=name;q.href=x.href;q.title=label;
-    q.innerHTML='<i class="'+icon(name)+'" aria-hidden="true"></i><span class="gd-visually-hidden">'+label+'</span>';
-    actions.appendChild(q);
-  }
+  items.forEach(function(item){
+    var type=typeFor(item.label,item.source.href);
+    var a=document.createElement('a');
 
-  quick('home',/accueil|index|\/forum/,'Accueil');
-  quick('search',/recherch|search/,'Rechercher');
-  quick('members',/membre|memberlist/,'Membres');
-  if(logged)quick('profile',/profil|profile/,'Profil');
-  if(logged)quick('messages',/messag|privmsg/,'Messagerie');
+    /* Tous les attributs fonctionnels du lien original sont conservés :
+       href de déconnexion avec session, target, onclick, rel, data-*, etc. */
+    copyAttributes(item.source,a);
 
-  /* Connexion/Déconnexion visible directement : on ne la perd plus. */
-  var session=logged?logout:login;
-  if(session){
-    var s=document.createElement('a');
-    s.className='gd-topnav-action gd-topnav-session';
-    s.dataset.gdQuick=logged?'logout':'login';
-    s.href=session.href;
-    s.title=logged?'Déconnexion':'Connexion';
-    s.innerHTML='<i class="'+icon(logged?'logout':'login')+'" aria-hidden="true"></i><span class="gd-visually-hidden">'+(logged?'Déconnexion':'Connexion')+'</span>';
-    actions.appendChild(s);
-  }
+    a.className='gd-topnav-action gd-nav-'+type;
+    a.title=item.label;
+    a.setAttribute('aria-label',item.label);
+    a.innerHTML='<i class="'+iconFor(type)+'" aria-hidden="true"></i><span class="gd-visually-hidden"></span>';
+    a.querySelector('.gd-visually-hidden').textContent=item.label;
+    actions.appendChild(a);
+  });
 
-  top.appendChild(left);top.appendChild(brand);top.appendChild(actions);
+  top.appendChild(left);
+  top.appendChild(brand);
+  top.appendChild(actions);
   document.body.insertBefore(top,document.body.firstChild);
 
-  /* ---------- NOTIFICATIONS ---------- */
+  /* ---------- VRAI BOUTON NOTIFICATIONS ---------- */
   function mountNotifications(){
     var notif=document.getElementById('notiffi_button');
     if(!notif || notif.parentNode===actions)return !!notif;
@@ -150,63 +198,15 @@ function init(){
     return true;
   }
   if(!mountNotifications()){
-    var tries=0,timer=setInterval(function(){
-      tries++;
-      if(mountNotifications()||tries>24)clearInterval(timer);
+    var attempts=0;
+    var timer=setInterval(function(){
+      attempts++;
+      if(mountNotifications() || attempts>24)clearInterval(timer);
     },250);
   }
 
-  /* ---------- BOUTON ROND ---------- */
-  var trigger=document.createElement('div');
-  trigger.className='gd-menu-trigger';trigger.setAttribute('role','button');trigger.setAttribute('tabindex','0');
-  trigger.setAttribute('aria-label','Ouvrir le menu principal');trigger.setAttribute('aria-expanded','false');
-  trigger.innerHTML='<span class="gd-menu-sliders"><span></span><i></i><b></b><em></em></span>';
-  header.appendChild(trigger);
-
-  /* ---------- MENU COMPLET : TOUS LES LIENS FORUMACTIF ---------- */
-  var pop=document.createElement('div');
-  pop.className='gd-menu-popover';
-  pop.innerHTML='<h2 class="gd-menu-popover-title">Navigate the domain</h2><p class="gd-menu-popover-note">all paths remain open</p>';
-
-  var ul=document.createElement('ul');ul.className='gd-menu-popover-list';
-
-  links.forEach(function(x){
-    var li=document.createElement('li');
-    var a=document.createElement('a');
-    a.href=x.href;a.textContent=x.label;
-
-    /* conserve les attributs fonctionnels utiles de Forumactif */
-    ['target','rel','title'].forEach(function(attr){
-      var v=x.node.getAttribute(attr);if(v)a.setAttribute(attr,v);
-    });
-
-    if((logged && logout && x.href===logout.href) || (!logged && login && x.href===login.href)){
-      li.className='gd-menu-session';
-    }
-    li.appendChild(a);ul.appendChild(li);
-  });
-
-  pop.appendChild(ul);header.appendChild(pop);
-
-  function close(){
-    pop.classList.remove('is-open');trigger.setAttribute('aria-expanded','false');
-  }
-  function toggle(e){
-    if(e){
-      e.preventDefault();e.stopPropagation();
-      if(e.stopImmediatePropagation)e.stopImmediatePropagation();
-    }
-    var open=!pop.classList.contains('is-open');
-    pop.classList.toggle('is-open',open);
-    trigger.setAttribute('aria-expanded',open?'true':'false');
-  }
-
-  trigger.addEventListener('click',toggle,false);
-  trigger.addEventListener('mousedown',function(e){e.preventDefault();e.stopPropagation()},false);
-  trigger.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' ')toggle(e)},false);
-  pop.addEventListener('click',function(e){e.stopPropagation()},false);
-  document.addEventListener('click',close,false);
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')close()},false);
+  /* Si un ancien JS menu est encore brièvement en cache, on enlève son bouton/popup. */
+  document.querySelectorAll('.gd-menu-trigger,.gd-menu-popover').forEach(function(el){el.remove()});
 }
 
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
