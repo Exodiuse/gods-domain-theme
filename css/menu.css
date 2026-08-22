@@ -1,420 +1,196 @@
 /* =========================================================
-   GOD'S DOMAIN — MENU PRINCIPAL V2
-   Structure inspirée de la référence : barre pleine largeur,
-   branding centré, accès rapides à droite, bouton rond sur le hero.
+   GOD'S DOMAIN — MENU PRINCIPAL V5
+   - toutes les fonctions de {GENERATED_NAV_BAR} sont conservées
+   - avatar/pseudo Forumactif à gauche
+   - connexion/déconnexion directement accessible
+   - Switcheroo sous la topbar
+   - notifications intégrées à droite
    ========================================================= */
 
 .gd-navbar{display:none!important}
 
-/* Barre supérieure pleine largeur */
+/* ---------- TOPBAR ---------- */
 .gd-topnav{
-  position:relative;
-  z-index:150;
-  width:100%;
-  min-height:64px;
-  display:grid;
-  grid-template-columns:minmax(220px,1fr) auto minmax(220px,1fr);
-  align-items:center;
-  gap:20px;
-  padding:0 26px;
-  box-sizing:border-box;
-  background:rgba(255,250,247,.96);
-  border-bottom:1px solid var(--gd-border);
+  position:relative;z-index:150;width:100%;min-height:64px;
+  display:grid;grid-template-columns:minmax(260px,1fr) auto minmax(260px,1fr);
+  align-items:center;gap:20px;padding:0 26px;box-sizing:border-box;
+  background:rgba(255,250,247,.97);border-bottom:1px solid var(--gd-border);
   box-shadow:0 1px 0 rgba(109,72,57,.03)
 }
-
-/* bloc gauche */
 .gd-topnav-left{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  min-width:0
+  display:flex;align-items:center;gap:11px;min-width:0;justify-self:start
+}
+.gd-topnav-userlink{
+  display:flex!important;align-items:center;gap:11px;min-width:0;color:inherit!important
 }
 .gd-topnav-avatar{
-  width:44px;
-  height:44px;
-  flex:0 0 44px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-  border:1px solid var(--gd-border);
-  border-radius:50%;
-  background:var(--gd-soft);
-  color:var(--gd-title);
-  font-family:"Cormorant Garamond",Georgia,serif;
-  font-size:16px;
-  font-style:italic
+  width:44px;height:44px;flex:0 0 44px;display:flex;align-items:center;justify-content:center;
+  overflow:hidden;border:1px solid var(--gd-border);border-radius:50%;background:var(--gd-soft);
+  color:var(--gd-title);font-family:"Cormorant Garamond",Georgia,serif;font-size:16px;font-style:italic
 }
 .gd-topnav-avatar img{
-  display:block;
-  width:100%;
-  height:100%;
-  object-fit:cover
+  display:block!important;width:100%!important;height:100%!important;max-width:none!important;
+  object-fit:cover!important;margin:0!important;border:0!important;border-radius:50%!important
 }
-.gd-topnav-usertext{
-  min-width:0;
-  line-height:1.05
-}
+.gd-topnav-usertext{min-width:0;line-height:1.05}
 .gd-topnav-usertext strong{
-  display:block;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  white-space:nowrap;
-  color:var(--gd-title);
-  font-family:"Cormorant Garamond",Georgia,serif;
-  font-size:17px;
-  font-style:italic;
-  font-weight:600
+  display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  color:var(--gd-title);font-family:"Cormorant Garamond",Georgia,serif;
+  font-size:17px;font-style:italic;font-weight:600
 }
 .gd-topnav-usertext small{
-  display:block;
-  margin-top:3px;
-  color:var(--gd-muted);
-  font-size:7px;
-  text-transform:uppercase;
-  letter-spacing:1.1px
+  display:block;margin-top:3px;color:var(--gd-muted);font-size:7px;
+  text-transform:uppercase;letter-spacing:1.1px
 }
 
-/* branding central */
+/* Branding central */
 .gd-topnav-brand{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  min-width:190px;
-  color:var(--gd-title)!important;
-  text-align:center
+  display:flex!important;flex-direction:column;align-items:center;justify-content:center;
+  min-width:190px;color:var(--gd-title)!important;text-align:center
 }
 .gd-topnav-brand-main{
-  font-family:"Cormorant Garamond",Georgia,serif;
-  font-size:28px;
-  font-style:italic;
-  font-weight:500;
-  line-height:.9;
-  letter-spacing:.6px;
-  text-transform:uppercase
+  font-family:"Cormorant Garamond",Georgia,serif;font-size:28px;font-style:italic;
+  font-weight:500;line-height:.9;letter-spacing:.6px;text-transform:uppercase
 }
 .gd-topnav-brand-sub{
-  position:relative;
-  display:flex;
-  align-items:center;
-  gap:8px;
-  margin-top:5px;
-  color:var(--gd-muted);
-  font-size:6px;
-  font-weight:700;
-  text-transform:uppercase;
-  letter-spacing:1.4px
+  position:relative;display:flex;align-items:center;gap:8px;margin-top:5px;
+  color:var(--gd-muted);font-size:6px;font-weight:700;text-transform:uppercase;letter-spacing:1.4px
 }
-.gd-topnav-brand-sub:before,
-.gd-topnav-brand-sub:after{
-  content:"";
-  width:28px;
-  height:1px;
-  background:var(--gd-line)
+.gd-topnav-brand-sub:before,.gd-topnav-brand-sub:after{
+  content:"";width:28px;height:1px;background:var(--gd-line)
 }
 
-/* raccourcis droite */
+/* Accès rapides */
 .gd-topnav-actions{
-  display:flex;
-  align-items:center;
-  justify-content:flex-end;
-  gap:8px
+  display:flex;align-items:center;justify-content:flex-end;gap:8px;justify-self:end
 }
 .gd-topnav-action{
-  position:relative;
-  width:36px;
-  height:36px;
-  display:flex!important;
-  align-items:center;
-  justify-content:center;
-  padding:0!important;
-  box-sizing:border-box;
-  border:1px solid var(--gd-border);
-  border-radius:3px;
-  background:var(--gd-soft);
-  color:var(--gd-title)!important;
-  transition:.18s ease
+  position:relative;width:36px;height:36px;display:flex!important;align-items:center;justify-content:center;
+  padding:0!important;box-sizing:border-box;border:1px solid var(--gd-border);border-radius:3px;
+  background:var(--gd-soft);color:var(--gd-title)!important;transition:.18s ease
 }
 .gd-topnav-action:hover{
-  background:var(--accentClr);
-  border-color:var(--accentClr);
-  color:#fff!important;
-  transform:translateY(-1px)
+  background:var(--accentClr);border-color:var(--accentClr);color:#fff!important;transform:translateY(-1px)
 }
-.gd-topnav-action i{
-  font-size:14px;
-  line-height:1
-}
-.gd-topnav-action .gd-visually-hidden{
-  position:absolute!important;
-  width:1px!important;
-  height:1px!important;
-  padding:0!important;
-  margin:-1px!important;
-  overflow:hidden!important;
-  clip:rect(0,0,0,0)!important;
-  white-space:nowrap!important;
-  border:0!important
+.gd-topnav-action i{font-size:14px;line-height:1}
+.gd-visually-hidden{
+  position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;
+  overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important
 }
 
-/* Le header image reste juste dessous */
-.gd-header{
-  position:relative!important
-}
-.gd-hero{
-  position:relative!important
-}
+/* Session : connexion / déconnexion, toujours disponible si Forumactif fournit le lien */
+.gd-topnav-session{border-color:color-mix(in srgb,var(--accentClr) 45%,var(--gd-border))}
 
-/* bouton rond façon référence */
+/* ---------- HEADER + BOUTON ROND ---------- */
+.gd-header{position:relative!important}
 .gd-menu-trigger{
-  position:absolute;
-  z-index:120;
-  top:18px;
-  right:18px;
-  width:42px;
-  height:42px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:0;
-  border:1px solid rgba(255,255,255,.82);
-  border-radius:50%;
-  background:rgba(255,250,247,.78);
-  color:var(--gd-title);
-  box-shadow:0 5px 16px rgba(92,61,45,.10);
-  backdrop-filter:blur(8px);
-  cursor:pointer;
-  transition:.2s ease
+  position:absolute;z-index:120;top:18px;right:18px;width:42px;height:42px;
+  display:flex;align-items:center;justify-content:center;padding:0;border:1px solid rgba(255,255,255,.82);
+  border-radius:50%;background:rgba(255,250,247,.82);color:var(--gd-title);
+  box-shadow:0 5px 16px rgba(92,61,45,.10);backdrop-filter:blur(8px);
+  cursor:pointer;transition:.2s ease;user-select:none
 }
-.gd-menu-trigger:hover,
-.gd-menu-trigger[aria-expanded="true"]{
-  background:var(--accentClr);
-  border-color:var(--accentClr);
-  color:#fff
+.gd-menu-trigger:hover,.gd-menu-trigger[aria-expanded="true"]{
+  background:var(--accentClr);border-color:var(--accentClr);color:#fff
 }
-.gd-menu-sliders{
-  position:relative;
-  width:16px;
-  height:14px
+.gd-menu-sliders{position:relative;width:16px;height:14px;pointer-events:none}
+.gd-menu-sliders:before,.gd-menu-sliders:after,.gd-menu-sliders span{
+  content:"";position:absolute;left:0;width:16px;height:1px;background:currentColor
 }
-.gd-menu-sliders:before,
-.gd-menu-sliders:after,
-.gd-menu-sliders span{
-  content:"";
-  position:absolute;
-  left:0;
-  width:16px;
-  height:1px;
-  background:currentColor
+.gd-menu-sliders:before{top:2px}.gd-menu-sliders span{top:6px}.gd-menu-sliders:after{top:10px}
+.gd-menu-sliders i,.gd-menu-sliders b,.gd-menu-sliders em{
+  position:absolute;width:3px;height:3px;border:1px solid currentColor;border-radius:50%;
+  background:rgba(255,250,247,.95);box-sizing:border-box
 }
-.gd-menu-sliders:before{top:2px}
-.gd-menu-sliders span{top:6px}
-.gd-menu-sliders:after{top:10px}
-.gd-menu-sliders i,
-.gd-menu-sliders b,
-.gd-menu-sliders em{
-  position:absolute;
-  width:3px;
-  height:3px;
-  border:1px solid currentColor;
-  border-radius:50%;
-  background:rgba(255,250,247,.95);
-  box-sizing:border-box
-}
-.gd-menu-sliders i{top:1px;left:4px}
-.gd-menu-sliders b{top:5px;left:10px}
-.gd-menu-sliders em{top:9px;left:6px}
+.gd-menu-sliders i{top:1px;left:4px}.gd-menu-sliders b{top:5px;left:10px}.gd-menu-sliders em{top:9px;left:6px}
 
-/* popover du menu secondaire */
+/* ---------- MENU COMPLET ---------- */
 .gd-menu-popover{
-  position:absolute;
-  z-index:119;
-  top:70px;
-  right:18px;
-  width:300px;
-  max-width:calc(100% - 36px);
-  padding:14px;
-  box-sizing:border-box;
-  background:rgba(255,250,247,.97);
-  border:1px solid var(--gd-border);
-  box-shadow:0 14px 34px rgba(86,55,44,.14);
-  backdrop-filter:blur(10px);
-  opacity:0;
-  visibility:hidden;
-  transform:translateY(-8px);
-  pointer-events:none;
-  transition:.2s ease
+  position:absolute;z-index:119;top:70px;right:18px;width:360px;max-width:calc(100% - 36px);
+  padding:14px;box-sizing:border-box;background:rgba(255,250,247,.98);
+  border:1px solid var(--gd-border);box-shadow:0 14px 34px rgba(86,55,44,.14);
+  backdrop-filter:blur(10px);opacity:0;visibility:hidden;transform:translateY(-8px);
+  pointer-events:none;transition:.2s ease
 }
 .gd-menu-popover.is-open{
-  opacity:1;
-  visibility:visible;
-  transform:translateY(0);
-  pointer-events:auto
+  opacity:1;visibility:visible;transform:translateY(0);pointer-events:auto
 }
 .gd-menu-popover-title{
-  margin:0 0 10px;
-  padding:0 0 8px;
-  border-bottom:1px solid var(--gd-line);
-  color:var(--gd-title);
-  font-family:"Cormorant Garamond",Georgia,serif;
-  font-size:18px;
-  font-style:italic;
-  font-weight:500
+  margin:0 0 4px;color:var(--gd-title);font-family:"Cormorant Garamond",Georgia,serif;
+  font-size:19px;font-style:italic;font-weight:500
+}
+.gd-menu-popover-note{
+  margin:0 0 11px;padding-bottom:9px;border-bottom:1px solid var(--gd-line);
+  color:var(--gd-muted);font-size:6px;text-transform:uppercase;letter-spacing:1px
 }
 .gd-menu-popover-list{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:6px;
-  margin:0;
-  padding:0;
-  list-style:none
+  display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:0;padding:0;list-style:none
 }
+.gd-menu-popover-list li{min-width:0}
 .gd-menu-popover-list a{
-  display:flex!important;
-  align-items:center;
-  min-height:34px;
-  padding:6px 8px!important;
-  box-sizing:border-box;
-  border:1px solid var(--gd-border);
-  background:var(--gd-soft);
-  color:var(--gd-title)!important;
-  font-size:8px;
-  font-weight:600;
-  text-transform:uppercase;
-  letter-spacing:.35px
+  display:flex!important;align-items:center;min-height:36px;padding:6px 9px!important;box-sizing:border-box;
+  border:1px solid var(--gd-border);background:var(--gd-soft);color:var(--gd-title)!important;
+  font-size:8px;font-weight:600;text-transform:uppercase;letter-spacing:.35px
 }
 .gd-menu-popover-list a:hover{
-  background:var(--accentClr);
-  border-color:var(--accentClr);
-  color:#fff!important
+  background:var(--accentClr);border-color:var(--accentClr);color:#fff!important
+}
+.gd-menu-popover-list .gd-menu-session a{
+  border-color:color-mix(in srgb,var(--accentClr) 55%,var(--gd-border))
+}
+
+/* ---------- SWITCHEROO ---------- */
+.sidebar{
+  inset:64px auto 0 0!important;top:64px!important;right:auto!important;bottom:0!important;left:0!important;
+  height:auto!important;z-index:145!important
+}
+
+/* ---------- NOTIFICATIONS ---------- */
+.gd-topnav-actions #notiffi_button,
+#notiffi_button.gd-topnav-notifications{
+  position:relative!important;inset:auto!important;top:auto!important;right:auto!important;bottom:auto!important;left:auto!important;
+  z-index:auto!important;flex:0 0 auto;min-width:36px!important;width:auto!important;height:36px!important;
+  margin:0!important;padding:0 10px!important;display:flex!important;align-items:center!important;justify-content:center!important;
+  gap:6px!important;box-sizing:border-box!important;border:1px solid var(--gd-border)!important;border-radius:3px!important;
+  background:var(--gd-soft)!important;color:var(--gd-title)!important;box-shadow:none!important;
+  font-size:7px!important;font-weight:600!important;line-height:1!important;text-transform:uppercase;letter-spacing:.35px;
+  white-space:nowrap;transition:.18s ease
+}
+.gd-topnav-actions #notiffi_button:hover,
+#notiffi_button.gd-topnav-notifications:hover{
+  background:var(--accentClr)!important;border-color:var(--accentClr)!important;color:#fff!important;transform:translateY(-1px)
+}
+.gd-topnav-actions #notiffi_button .unread_count{
+  width:17px!important;min-width:17px!important;height:17px!important;margin:0!important;border-radius:50%!important;font-size:8px!important
+}
+#notiffi_panel{
+  top:64px!important;height:calc(100% - 64px)!important;padding-top:15px!important;z-index:144!important
 }
 
 /* dark */
-[data-color-scheme="dark"] .gd-topnav,
-[data-color-scheme="dark"] .gd-menu-popover{
-  background:rgba(43,35,34,.96)
+[data-color-scheme="dark"] .gd-topnav,[data-color-scheme="dark"] .gd-menu-popover{
+  background:rgba(43,35,34,.97)
 }
-[data-color-scheme="dark"] .gd-menu-trigger{
-  background:rgba(43,35,34,.82)
-}
+[data-color-scheme="dark"] .gd-menu-trigger{background:rgba(43,35,34,.84)}
 
 /* responsive */
-@media(max-width:820px){
-  .gd-topnav{
-    grid-template-columns:1fr auto;
-    min-height:56px;
-    padding:0 12px
-  }
-  .gd-topnav-left{display:none}
-  .gd-topnav-brand{
-    align-items:flex-start;
-    min-width:0
-  }
-  .gd-topnav-brand-main{font-size:21px}
-  .gd-topnav-brand-sub{font-size:5px}
-  .gd-topnav-brand-sub:before,
-  .gd-topnav-brand-sub:after{display:none}
+@media(max-width:900px){
+  .gd-topnav{grid-template-columns:minmax(180px,1fr) auto;min-height:56px;padding:0 12px}
+  .gd-topnav-brand{display:none!important}
   .gd-topnav-actions{gap:5px}
   .gd-topnav-action{width:32px;height:32px}
+  .sidebar{inset:56px auto 0 0!important;top:56px!important}
+  #notiffi_panel{top:56px!important;height:calc(100% - 56px)!important}
+  .gd-topnav-actions #notiffi_button,#notiffi_button.gd-topnav-notifications{
+    min-width:32px!important;height:32px!important;padding:0 7px!important
+  }
 }
-@media(max-width:520px){
+@media(max-width:620px){
+  .gd-topnav-left{min-width:0}
+  .gd-topnav-avatar{width:38px;height:38px;flex-basis:38px}
+  .gd-topnav-usertext small{display:none}
+  .gd-topnav-usertext strong{font-size:14px}
   .gd-topnav-action[data-gd-quick="members"],
   .gd-topnav-action[data-gd-quick="search"]{display:none!important}
   .gd-menu-popover-list{grid-template-columns:1fr}
 }
-
-/* =========================================================
-   GOD'S DOMAIN — MENU PRINCIPAL V3
-   Intégration Switcheroo + Notifications
-   ========================================================= */
-
-/* La barre Switcheroo commence SOUS la topbar au lieu de la recouvrir. */
-.sidebar{
-  inset:64px auto 0 0 !important;
-  top:64px !important;
-  right:auto !important;
-  bottom:0 !important;
-  left:0 !important;
-  height:auto !important;
-  z-index:145 !important;
-}
-
-/* Le vrai bouton notifications Forumactif est déplacé dans les actions du menu. */
-.gd-topnav-actions #notiffi_button,
-#notiffi_button.gd-topnav-notifications{
-  position:relative !important;
-  inset:auto !important;
-  top:auto !important;
-  right:auto !important;
-  bottom:auto !important;
-  left:auto !important;
-  z-index:auto !important;
-  flex:0 0 auto;
-  min-width:36px !important;
-  width:auto !important;
-  height:36px !important;
-  margin:0 !important;
-  padding:0 10px !important;
-  display:flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-  gap:6px !important;
-  box-sizing:border-box !important;
-  border:1px solid var(--gd-border) !important;
-  border-radius:3px !important;
-  background:var(--gd-soft) !important;
-  color:var(--gd-title) !important;
-  box-shadow:none !important;
-  font-size:7px !important;
-  font-weight:600 !important;
-  line-height:1 !important;
-  text-transform:uppercase;
-  letter-spacing:.35px;
-  white-space:nowrap;
-  transition:.18s ease
-}
-.gd-topnav-actions #notiffi_button:hover,
-#notiffi_button.gd-topnav-notifications:hover{
-  background:var(--accentClr) !important;
-  border-color:var(--accentClr) !important;
-  color:#fff !important;
-  transform:translateY(-1px)
-}
-
-/* Compteur éventuel conservé et lisible. */
-.gd-topnav-actions #notiffi_button .unread_count{
-  width:17px !important;
-  min-width:17px !important;
-  height:17px !important;
-  margin:0 !important;
-  border-radius:50% !important;
-  font-size:8px !important
-}
-
-/* Le panneau notifications s'ouvre lui aussi sous la topbar. */
-#notiffi_panel{
-  top:64px !important;
-  height:calc(100% - 64px) !important;
-  padding-top:15px !important;
-  z-index:144 !important
-}
-
-@media(max-width:820px){
-  .sidebar{
-    inset:56px auto 0 0 !important;
-    top:56px !important
-  }
-  #notiffi_panel{
-    top:56px !important;
-    height:calc(100% - 56px) !important
-  }
-  .gd-topnav-actions #notiffi_button,
-  #notiffi_button.gd-topnav-notifications{
-    min-width:32px !important;
-    height:32px !important;
-    padding:0 7px !important
-  }
-}
-
