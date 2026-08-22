@@ -224,7 +224,7 @@ img,iframe{max-width:100%}
 .gd-hero-title{font-family:"Cormorant Garamond",Georgia,serif;font-size:58px;line-height:.95;font-weight:500;letter-spacing:2px;color:#9c6f66;text-transform:uppercase}
 .gd-hero-separator{margin:13px 0 8px;color:#c59c73;font-size:11px}
 .gd-hero-subtitle{font-family:"Cormorant Garamond",Georgia,serif;font-size:16px;font-style:italic;letter-spacing:.8px;color:#8d756e}
-.links_bar{margin:24px 0 32px !important;padding:7px 3px !important;background:transparent !important;border:0 !important;border-top:1px solid var(--gd-line) !important;border-bottom:1px solid var(--gd-line) !important;border-radius:0 !important;font-size:9px !important;color:var(--gd-muted)}
+.links_bar{margin:24px 0 32px !important;padding:7px 3px !important;background:transparent !important;border:0 !important;border-radius:0 !important;font-size:9px !important;color:var(--gd-muted)}
 .links_bar a{color:var(--gd-muted) !important;text-decoration:none !important}
 .links_bar a:hover{color:#b47f74 !important}
 #page-footer{margin-top:45px !important;background:transparent !important;border-top:1px solid #dfcbc4 !important;color:#9a817a !important;font-size:9px !important}
