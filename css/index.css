@@ -107,169 +107,287 @@
 .gd-forum-footer{margin:0!important;padding:4px 8px!important;background:rgba(246,227,218,.28)!important;border-top:1px solid var(--gd-line)!important}
 .gd-forum-stats{color:var(--gd-muted)!important}
 
-
 /* =========================================================
-   PROLOGUE — disposition validée
-   1 grand forum à gauche / 2 forums empilés à droite
-   Sous-forums du premier forum APRÈS le dernier message
+   PROLOGUE — RENDU DE RÉFÉRENCE
+   Une seule définition. Ne pas surcharger plus bas.
    ========================================================= */
 
+.gd-category:first-of-type{
+  --gd-prologue-title-bg:#ded7bd;
+  margin:38px 0!important;
+}
+
+/* 1 grand forum à gauche + 2 forums empilés à droite */
 .gd-category:first-of-type .gd-forums{
-    display:grid!important;
-    grid-template-columns:minmax(0,.9fr) minmax(0,1.6fr)!important;
-    grid-template-rows:repeat(2,minmax(118px,auto))!important;
-    gap:10px!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,.9fr) minmax(0,1.6fr)!important;
+  grid-template-rows:repeat(2,minmax(118px,auto))!important;
+  gap:10px!important;
 }
 
 .gd-category:first-of-type .gd-forum{
-    margin:0!important;
-    min-width:0!important;
+  min-width:0!important;
+  margin:0!important;
 }
 
-/* --- premier forum : grande colonne gauche --- */
+/* ---------- titres beige/blanc comme sur le rendu attendu ---------- */
+.gd-category:first-of-type .gd-forum-title{
+  display:inline-block!important;
+  width:auto!important;
+  margin:0!important;
+  padding:5px 10px 4px!important;
+  background:var(--gd-prologue-title-bg)!important;
+  color:#fffaf7!important;
+  font-size:20px!important;
+  font-style:italic!important;
+  font-weight:600!important;
+  line-height:1.05!important;
+  text-transform:uppercase!important;
+  letter-spacing:.15px!important;
+}
+
+.gd-category:first-of-type .gd-forum-title>a,
+.gd-category:first-of-type .gd-forum-title>a:link,
+.gd-category:first-of-type .gd-forum-title>a:visited{
+  color:#fffaf7!important;
+}
+
+.gd-category:first-of-type .gd-forum-title>a:hover{
+  color:#fff!important;
+}
+
+/* =========================================================
+   PREMIER FORUM — grande colonne gauche
+   titre > description > sous-forums > dernier message
+   ========================================================= */
+
 .gd-category:first-of-type .gd-forum:first-child{
-    grid-column:1!important;
-    grid-row:1 / 3!important;
-    display:flex!important;
-    flex-direction:column!important;
+  grid-column:1!important;
+  grid-row:1 / 3!important;
+  display:flex!important;
+  flex-direction:column!important;
 }
 
 .gd-category:first-of-type .gd-forum:first-child .gd-forum-body{
-    position:relative!important;
-    display:flex!important;
-    flex:1 1 auto!important;
-    flex-direction:column!important;
-    align-items:stretch!important;
-    height:100%!important;
-    min-height:0!important;
-    padding:0!important;
+  position:relative!important;
+  display:flex!important;
+  flex:1 1 auto!important;
+  flex-direction:column!important;
+  align-items:stretch!important;
+  height:100%!important;
+  min-height:0!important;
+  padding:0!important;
 }
 
-/* On aplatit uniquement ce conteneur pour pouvoir placer les sous-forums
-   après le bloc "dernier message", sans modifier index_box. */
+/* On garde .gd-forum-info comme un vrai bloc :
+   les sous-forums restent donc naturellement AVANT le dernier message. */
 .gd-category:first-of-type .gd-forum:first-child .gd-forum-info{
-    display:contents!important;
+  display:flex!important;
+  flex:1 1 auto!important;
+  flex-direction:column!important;
+  min-height:0!important;
+  width:auto!important;
+  padding:14px 48px 10px 16px!important;
 }
 
 .gd-category:first-of-type .gd-forum:first-child .gd-forum-title-row{
-    order:1!important;
-    position:relative!important;
-    display:flex!important;
-    align-items:flex-start!important;
-    justify-content:space-between!important;
-    padding:14px 48px 0 16px!important;
-}
-
-.gd-category:first-of-type .gd-forum:first-child .gd-forum-title{
-    margin:0!important;
-    font-size:20px!important;
-    text-align:left!important;
+  position:relative!important;
+  display:flex!important;
+  align-items:flex-start!important;
+  justify-content:flex-start!important;
+  margin:0!important;
+  padding:0!important;
 }
 
 .gd-category:first-of-type .gd-forum:first-child .gd-forum-status{
-    top:14px!important;
-    right:14px!important;
-    transform:none!important;
+  position:absolute!important;
+  top:14px!important;
+  right:14px!important;
+  width:28px!important;
+  height:28px!important;
+  margin:0!important;
+  transform:none!important;
 }
 
 .gd-category:first-of-type .gd-forum:first-child .gd-forum-desc{
-    order:2!important;
-    max-width:none!important;
-    margin:0!important;
-    padding:7px 16px 10px!important;
+  max-width:none!important;
+  margin:8px 0 0!important;
+  padding:0!important;
+  font-size:11px!important;
+  line-height:1.62!important;
+  text-align:justify!important;
 }
 
-/* Dernier message : on garde exactement le style générique existant,
-   on change seulement sa place dans la colonne. */
-.gd-category:first-of-type .gd-forum:first-child .gd-forum-last{
-    order:3!important;
-    grid-column:auto!important;
-    grid-row:auto!important;
-    width:100%!important;
-    height:auto!important;
-    margin-top:auto!important;
-    padding:10px 16px!important;
-    border-left:0!important;
-    border-top:1px solid var(--gd-line)!important;
-    box-sizing:border-box!important;
-}
-
-/* Seule modification demandée : les sous-forums passent APRÈS
-   les données du dernier message. Pas de nouveau style décoratif. */
+/* Sous-forums exactement dans la zone haute, centrés,
+   juste avant le bloc dernier message. */
 .gd-category:first-of-type .gd-forum:first-child .gd-subforums{
-    order:4!important;
-    display:flex!important;
-    flex-wrap:wrap!important;
-    justify-content:center!important;
-    gap:4px!important;
-    width:100%!important;
-    margin:0!important;
-    padding:7px 12px!important;
-    box-sizing:border-box!important;
-    border-top:1px solid var(--gd-line)!important;
-    text-align:center!important;
+  display:flex!important;
+  flex-wrap:wrap!important;
+  justify-content:center!important;
+  gap:5px!important;
+  width:100%!important;
+  margin:auto 0 0!important;
+  padding:12px 0 0!important;
+  font-size:0!important;
+  text-align:center!important;
 }
 
 .gd-category:first-of-type .gd-forum:first-child .gd-subforums:empty{
-    display:none!important;
+  display:none!important;
+}
+
+.gd-category:first-of-type .gd-forum:first-child .gd-subforums a{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  margin:0!important;
+  padding:4px 8px!important;
+  background:var(--gd-soft)!important;
+  color:var(--gd-muted)!important;
+  font-size:8px!important;
+  font-weight:600!important;
+  line-height:1!important;
+  text-transform:uppercase!important;
+  letter-spacing:.35px!important;
+}
+
+.gd-category:first-of-type .gd-forum:first-child .gd-subforums a:hover{
+  background:var(--accentClr)!important;
+  color:#fff!important;
+}
+
+/* Dernier message : grande zone basse, centrée comme sur l'image 1 */
+.gd-category:first-of-type .gd-forum:first-child .gd-forum-last{
+  display:grid!important;
+  grid-template-columns:42px max-content!important;
+  justify-content:center!important;
+  align-content:center!important;
+  align-items:center!important;
+  gap:10px!important;
+  width:100%!important;
+  min-height:122px!important;
+  height:auto!important;
+  margin:0!important;
+  padding:12px 16px!important;
+  box-sizing:border-box!important;
+  border-left:0!important;
+  border-top:1px solid var(--gd-line)!important;
+  background:var(--gd-soft)!important;
+  text-align:left!important;
+}
+
+.gd-category:first-of-type .gd-forum:first-child .gd-last-avatar,
+.gd-category:first-of-type .gd-forum:first-child .gd-last-avatar img{
+  width:42px!important;
+  height:42px!important;
+}
+
+.gd-category:first-of-type .gd-forum:first-child .gd-last-content{
+  width:max-content!important;
+  max-width:135px!important;
+  min-width:0!important;
 }
 
 .gd-category:first-of-type .gd-forum:first-child .gd-forum-footer{
-    justify-content:center!important;
+  justify-content:center!important;
+  margin:0!important;
+  padding:5px 9px!important;
 }
 
-/* --- deux forums empilés à droite --- */
+/* =========================================================
+   DEUX FORUMS À DROITE
+   ========================================================= */
+
 .gd-category:first-of-type .gd-forum:nth-child(2){
-    grid-column:2!important;
-    grid-row:1!important;
+  grid-column:2!important;
+  grid-row:1!important;
 }
 
 .gd-category:first-of-type .gd-forum:nth-child(3){
-    grid-column:2!important;
-    grid-row:2!important;
+  grid-column:2!important;
+  grid-row:2!important;
 }
 
 .gd-category:first-of-type .gd-forum:not(:first-child){
-    display:flex!important;
-    flex-direction:column!important;
-    min-height:118px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  min-height:118px!important;
 }
 
 .gd-category:first-of-type .gd-forum:not(:first-child) .gd-forum-body{
-    grid-template-columns:minmax(0,1fr) 160px!important;
-    height:100%!important;
-    padding:0!important;
+  position:relative!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) 205px!important;
+  flex:1 1 auto!important;
+  min-height:0!important;
+  height:100%!important;
+  padding:0!important;
+}
+
+.gd-category:first-of-type .gd-forum:not(:first-child) .gd-forum-info{
+  min-width:0!important;
+  padding:12px 14px 10px!important;
+}
+
+.gd-category:first-of-type .gd-forum:not(:first-child) .gd-forum-title-row{
+  display:flex!important;
+  align-items:flex-start!important;
+  justify-content:flex-start!important;
+  margin:0!important;
+  padding:0!important;
+}
+
+.gd-category:first-of-type .gd-forum:not(:first-child) .gd-forum-desc{
+  margin-top:7px!important;
+}
+
+.gd-category:first-of-type .gd-forum:not(:first-child) .gd-forum-last{
+  grid-column:2!important;
+  grid-row:1!important;
+  align-self:stretch!important;
+  height:100%!important;
+  margin:0!important;
+  padding:10px 12px!important;
+  border-top:0!important;
+  border-left:1px solid var(--gd-line)!important;
+  box-sizing:border-box!important;
 }
 
 .gd-category:first-of-type .gd-forum:not(:first-child) .gd-forum-status{
-    right:175px!important;
+  top:12px!important;
+  right:12px!important;
 }
 
-/* --- responsive --- */
+/* ---------- thème sombre ---------- */
+[data-color-scheme="dark"] .gd-category:first-of-type{
+  --gd-prologue-title-bg:#594842;
+}
+
+/* ---------- responsive ---------- */
 @media(max-width:760px){
-    .gd-category:first-of-type .gd-forums{
-        display:block!important;
-    }
+  .gd-category:first-of-type .gd-forums{
+    display:block!important;
+  }
 
-    .gd-category:first-of-type .gd-forum{
-        margin-bottom:10px!important;
-    }
+  .gd-category:first-of-type .gd-forum{
+    margin-bottom:10px!important;
+  }
 
-    .gd-category:first-of-type .gd-forum:not(:first-child) .gd-forum-body{
-        grid-template-columns:1fr!important;
-    }
+  .gd-category:first-of-type .gd-forum:not(:first-child) .gd-forum-body{
+    grid-template-columns:1fr!important;
+  }
 
-    .gd-category:first-of-type .gd-forum:not(:first-child) .gd-forum-last{
-        grid-column:1!important;
-        grid-row:auto!important;
-        height:auto!important;
-        border-left:0!important;
-        border-top:1px solid var(--gd-line)!important;
-    }
+  .gd-category:first-of-type .gd-forum:not(:first-child) .gd-forum-last{
+    grid-column:1!important;
+    grid-row:auto!important;
+    height:auto!important;
+    border-left:0!important;
+    border-top:1px solid var(--gd-line)!important;
+  }
 
-    .gd-category:first-of-type .gd-forum:not(:first-child) .gd-forum-status{
-        right:12px!important;
-    }
+  .gd-category:first-of-type .gd-forum:not(:first-child) .gd-forum-status{
+    right:12px!important;
+  }
 }
 
 .gd-last-label{display:none!important}
