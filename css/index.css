@@ -189,4 +189,4 @@ body:has(.gd-pa) #page-footer a{color:var(--gd-muted)!important;}
 .main_forum:has(.gd-pa) .block,
 .main_forum:has(.gd-pa) .forabg{box-shadow:none;}
 [data-color-scheme="dark"] .main_forum:has(.gd-pa){background:transparent!important;}
-.gd-category:first-of-type .gd-forum:first-child{background-color:var(--gd-surface)!important;background-image:url("https://i.postimg.cc/MK6jw0qp/forum-1-bg.png")!important;background-repeat:no-repeat!important;background-position:left bottom!important;background-size:185px auto!important}
+.gd-category:first-of-type .gd-forum:first-child{background-color:var(--gd-surface)!important;background-image:url("https://i.ibb.co/N6PQczmJ/forum-1-bg.png")!important;background-repeat:no-repeat!important;background-position:left bottom!important;background-size:185px auto!important}
