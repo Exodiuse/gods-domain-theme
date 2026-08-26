@@ -57,7 +57,7 @@
 .gd-qeel-recent .gd-qeel-label{display:inline;margin-right:12px}
 .gd-pa{display:grid;grid-template-columns:1.65fr .85fr;border:1px solid var(--gd-border);background:var(--gd-surface)}
 .gd-pa-side{border-left:1px solid var(--gd-line);background:var(--gd-soft)}
-.gd-pa-eyebrow,.gd-pa-title{display:block;margin-bottom:8px;color:#b08479;font-size:8px;font-weight:600;text-transform:uppercase;letter-spacing:1.7px}
+.gd-pa-eyebrow,.gd-pa-title{display:block;margin-bottom:8px;color:#f1efd6;font-size:8px;font-weight:600;text-transform:uppercase;letter-spacing:1.7px}
 .gd-pa-main h2{margin:0 0 12px;color:#9d7067;font-family:"Cormorant Garamond",Georgia,serif;font-size:28px;font-style:italic;font-weight:500}
 .gd-pa-main p,.gd-pa-side p{margin:0 0 10px;color:var(--gd-text);font-size:10px;line-height:1.7}
 .gd-pa-links{display:flex;flex-wrap:wrap;gap:5px;margin-top:18px}
@@ -65,7 +65,7 @@
 .gd-pa-links a:hover{background:#bd8f84}
 .gd-pa-section+.gd-pa-section{margin-top:20px;padding-top:16px;border-top:1px solid #e4d2cc}
 .gd-pa-news{margin-bottom:9px;color:#756762;font-size:9px;line-height:1.5}
-.gd-pa-news b{display:block;color:#a9786d;font-family:"Cormorant Garamond",Georgia,serif;font-size:13px;font-weight:500}
+.gd-pa-news b{display:block;color:#fefaf3;font-family:"Cormorant Garamond",Georgia,serif;font-size:13px;font-weight:500}
 .introduction>.h3,.gd-pa-main h2{border:0 !important;border-bottom:0 !important;box-shadow:none !important}
 .introduction>.h3::before,.introduction>.h3::after,.gd-pa-main h2::before,.gd-pa-main h2::after{display:none !important;content:none !important}
 .gd-pa-main{padding:22px 25px}
