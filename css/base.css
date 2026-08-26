@@ -203,8 +203,8 @@ form[name="form_login"] .content{display:grid;justify-content:center;justify-ite
 .overview div{margin-bottom:5px}
 .overview a{float:right}
 #find_username{display:none;position:fixed;left:50%;width:450px;margin-left:-225px;top:50%;margin-top:-125px;background-color:var(--neutral);padding:10px;border:var(--border);border-radius:5px}
-:root{color-scheme:light;--gd-header-image:url(https://i.ibb.co/8S6MDTn/header-v3.png)}
-[data-color-scheme="dark"]{color-scheme:dark;--gd-header-image:url(https://i.ibb.co/FLn0Ddd0/header-3.png)}
+:root{color-scheme:light;--gd-header-image:url(https://i.ibb.co/cSqXMZkV/header-v3.png)}
+[data-color-scheme="dark"]{color-scheme:dark;--gd-header-image:url(https://i.ibb.co/cSqXMZkV/header-v3.png)}
 html#min-width,body#blanktheme{width:100% !important;max-width:100% !important;min-width:0 !important;min-height:100%}
 html#min-width{overflow-x:hidden !important}
 body#blanktheme{margin:0 !important;padding-left:0 !important;overflow-x:hidden !important;color:var(--textColor)}
