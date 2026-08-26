@@ -1,5 +1,5 @@
 .gd-header{position:relative!important;left:auto!important;width:100%!important;max-width:none!important;margin:0!important;transform:none!important}
-.gd-header .gd-hero{width:100%!important;max-width:none!important;margin:0!important;background-size:cover!important;background-position:center!important;border-left:0!important;border-right:0!important}
+.gd-header .gd-hero{width:100%!important;max-width:none!important;margin:0!important;background-size:contain!important;background-position:center!important;border-left:0!important;border-right:0!important}
 .gd-navbar{display:flex!important;align-items:stretch!important;width:100%;min-height:44px;margin:0!important;padding:0!important;background:var(--gd-nav)!important;border:0!important;border-radius:0!important;font-size:0;list-style:none!important}
 .gd-navbar>li{display:contents!important}
 .gd-navbar br{display:none!important}
