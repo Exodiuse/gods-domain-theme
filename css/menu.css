@@ -1,10 +1,3 @@
-/* =========================================================
-   GOD'S DOMAIN — MENU PRINCIPAL V7
-   - suppression des doublons exacts de navigation
-   - branding réellement centré dans la fenêtre
-   - infobulles personnalisées sous chaque icône
-   ========================================================= */
-
 .gd-navbar{display:none!important}
 
 /* ---------- TOPBAR ---------- */
@@ -321,7 +314,7 @@
 }
 
 /* ---------- DARK ---------- */
-[data-color-scheme="dark"] .gd-topnav{background:rgba(43,35,34,.97)}
+[data-color-scheme="dark"] .gd-topnav{background:rgb(32 32 34)}
 
 /* ---------- RESPONSIVE ---------- */
 @media(max-width:1150px){
