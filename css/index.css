@@ -143,8 +143,8 @@
 .gd-category:first-of-type .gd-forum:not(:first-child) .gd-forum-footer{justify-content:flex-end!important;margin:0!important;padding:4px 8px!important;background:transparent!important;border:0!important}
 [data-color-scheme="dark"] .gd-category:first-of-type{background:transparent!important;border-color:var(--gd-border)!important}
 [data-color-scheme="dark"] .gd-category:first-of-type .gd-forum{background:var(--gd-surface)!important;border-color:var(--gd-line)!important}
-[data-color-scheme="dark"] .gd-category:first-of-type .gd-forum-title{background:var(--gd-soft2)!important;color:var(--gd-title)!important}
-[data-color-scheme="dark"] .gd-category:first-of-type .gd-forum-title>a{color:var(--gd-title)!important}
+[data-color-scheme="dark"] .gd-category .gd-forum-title{background:var(--gd-soft2)!important;color:var(--gd-title)!important}
+[data-color-scheme="dark"] .gd-category .gd-forum-title>a{color:var(--gd-title)!important}
 [data-color-scheme="dark"] .gd-category:first-of-type .gd-forum-desc strong,[data-color-scheme="dark"] .gd-category:first-of-type .gd-forum-desc b{background:var(--accentClr)!important;color:#fff!important}
 [data-color-scheme="dark"] .gd-category:first-of-type .gd-subforums a{background:var(--gd-soft)!important;color:var(--gd-muted)!important}
 @media(max-width:760px){.gd-category:first-of-type .gd-forums{display:block!important}.gd-category:first-of-type .gd-forum{margin-bottom:10px!important}.gd-category:first-of-type .gd-forum:not(:first-child) .gd-forum-body{grid-template-columns:1fr!important}.gd-category:first-of-type .gd-forum:not(:first-child) .gd-forum-last{grid-column:1!important;grid-row:auto!important;height:auto!important}.gd-category:first-of-type .gd-forum:not(:first-child) .gd-forum-status{right:12px!important}}
