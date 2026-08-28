@@ -21,6 +21,7 @@
 
         item.classList.toggle('is-active',active);
         item.setAttribute('aria-selected',active?'true':'false');
+        item.setAttribute('tabindex',active?'0':'-1');
 
         if(active&&focusNav){
           item.focus();
@@ -50,7 +51,7 @@
 
       if(index<0)return;
 
-      if(event.key==='ArrowDown'||event.key==='ArrowRight'){
+      if(event.key==='ArrowDown'){
         event.preventDefault();
 
         var next=navItems[(index+1)%navItems.length];
@@ -61,7 +62,7 @@
         );
       }
 
-      if(event.key==='ArrowUp'||event.key==='ArrowLeft'){
+      if(event.key==='ArrowUp'){
         event.preventDefault();
 
         var prev=navItems[(index-1+navItems.length)%navItems.length];
@@ -91,12 +92,10 @@
       }
     });
 
-    var initial=root.querySelector('.gd-guide-nav-item.is-active');
+    var initial=root.querySelector('.gd-guide-nav-item.is-active')||navItems[0];
 
     showPanel(
-      initial
-        ? initial.getAttribute('data-guide-target')
-        : navItems[0].getAttribute('data-guide-target'),
+      initial.getAttribute('data-guide-target'),
       false
     );
   }
